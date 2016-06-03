@@ -2,9 +2,7 @@
 
 ## Introduction
 
-Stripe color for backgroup.
-
-![](https://i.gyazo.com/411ae41541c74cd8205fffccec346374.png)
+Highlight textobj.
 
 ## Installation
 
