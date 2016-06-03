@@ -1,0 +1,72 @@
+*operator-highlighter.txt*	textobj の範囲をハイライトする operator
+
+
+==============================================================================
+概要						*operator-highlighter-introduction*
+
+textobj の範囲をハイライトする operator です。
+
+- Requires
+  operator-user - https://github.com/kana/vim-operator-user
+
+
+==============================================================================
+設定例						*operator-highlighter-example*
+
+>
+	" ハイライトグループを設定
+	let g:operator#highlighter#config = { "group" : "Error" }
+
+	" ハイライトする
+	map <Leader>h <Plug>(operator-highlighter)
+
+	" thinca/vim-operator-sequence を利用して
+	" ヤンクした textobj を一定時間ハイライトする
+	let g:operator#highlighter#config = { "clear_time" : 3000 }
+	noremap <Plug>(yank) y
+	noremap <expr> y operator#sequence#map("\<Plug>(operator-highlighter-once)", "\<Plug>(yank)")
+
+<
+
+==============================================================================
+インターフェース				*operator-highlighter-interface*
+
+------------------------------------------------------------------------------
+コマンド					*operator-highlighter-commands*
+
+HighlighterClear				*HighlighterClear*
+	カレントウィンドウのハイライトを削除する。
+
+------------------------------------------------------------------------------
+マッピング					*operator-highlighter-mapping*
+
+<Plug>(operator-highlighter)			*<Plug>(operator-highlighter)*
+	|g:operator#highlighter#config| の設定でハイライトします。
+
+<Plug>(operator-highlighter-once)	 *<Plug>(operator-highlighter-once)*
+	同ウィンドウですでにハイライトされている場合は、ハイライトを削除して
+	から |<Plug>(operator-highlighter)| を呼び出します。
+
+------------------------------------------------------------------------------
+関数						*operator-highlighter-functions*
+
+operator#highlighter#mapexpr({config})		*operator#highlighter#mapexpr()*
+
+
+==============================================================================
+設定						*operator-highlighter-setting*
+
+------------------------------------------------------------------------------
+変数						*operator-highlighter-variables*
+
+g:operator#highlighter#config			*g:operator#highlighter#config*
+	ハイライトの設定です。
+	以下の値をキーとした辞書を設定します。
+
+	"group"      : ハイライトグループ
+	"priority"   : 優先順位 NOTE: |matchadd()|
+	"clear_time" : ハイライトが消える時間（ミリ秒単位）
+
+
+==============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
