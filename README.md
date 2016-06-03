@@ -4,6 +4,8 @@
 
 Highlight textobj.
 
+![operator_highlighter](https://cloud.githubusercontent.com/assets/214488/15773039/ba013044-29af-11e6-98c1-2c8079bde7f3.gif)
+
 ## Installation
 
 [Neobundle](https://github.com/Shougo/neobundle.vim) / [Vundle](https://github.com/gmarik/Vundle.vim) / [vim-plug](https://github.com/junegunn/vim-plug)
