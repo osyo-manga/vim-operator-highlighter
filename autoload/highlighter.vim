@@ -2,7 +2,7 @@ scriptencoding utf-8
 let s:save_cpo = &cpo
 set cpo&vim
 
-let s:V = vital#of("vital")
+let s:V = vital#operator_highlighter#of()
 function! highlighter#vital()
 	return s:V
 endfunction

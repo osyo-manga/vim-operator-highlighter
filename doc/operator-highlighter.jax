@@ -67,6 +67,8 @@ g:operator#highlighter#config			*g:operator#highlighter#config*
 	"priority"   : 優先順位 NOTE: |matchadd()|
 	"clear_time" : ハイライトが消える時間（ミリ秒単位）
 
+	NOTE: "clear_time" は |timer_start()| が使用できる場合に動作します。
+
 
 ==============================================================================
 vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl

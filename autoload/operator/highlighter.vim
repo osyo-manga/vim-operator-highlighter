@@ -25,20 +25,27 @@ function! s:as_config(src)
 endfunction
 
 function! s:get_config(base)
-	return extend(deepcopy(a:base), extend(deepcopy(s:default_config), g:operator#highlighter#config))
+	return extend(deepcopy(s:default_config), a:base)
+" 	return extend(deepcopy(a:base), extend(deepcopy(s:default_config), g:operator#highlighter#config))
 endfunction
 
 
 let s:base_config = {}
 function! operator#highlighter#do(wise)
+	let g:homu = s:base_config
 	let config = s:get_config(s:base_config)
+	let s:base_config = {}
+
 	let config.pattern = s:S.pattern_by_range(s:as_wise_key(a:wise), getpos("'[")[1:], getpos("']")[1:])
 
 	return highlighter#highlight(config)
 endfunction
 
 
-
+function! operator#highlighter#mapexpr(config)
+	let s:base_config = a:config
+	return "\<Plug>(operator-highlighter-dummy)"
+endfunction
 
 let &cpo = s:save_cpo
 unlet s:save_cpo

@@ -8,7 +8,8 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 
-call operator#user#define('highlighter', 'operator#highlighter#do')
+call operator#user#define('highlighter-dummy', 'operator#highlighter#do')
+map <expr> <Plug>(operator-highlighter) operator#highlighter#mapexpr(g:operator#highlighter#config)
 
 
 let &cpo = s:save_cpo
